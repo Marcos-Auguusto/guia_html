@@ -7,7 +7,7 @@
     <title>Order Form</title>
     <link rel="stylesheet" href="style.css"> 
     <script src="modernizr.js"></script>
-    <script src="app.js"></script>
+    <script src="apps.js"></script>
 </head>
 <body>
     <form name="order" method="post" action="/submit">
@@ -156,9 +156,37 @@
                 </tfoot>
             </table>
         </fieldset>
+        <fieldset>
+            <legend>Payment Details</legend>
+            <ul>
+                <li>
+                    <label class="required">
+                        <div>Credit Card No.</div>
+                        <input name="card_number" pattern="[0-9]{13,16}"
+                        maxlength="16" required title="13-16 digits, no spaces">
+                    </label>
+                </li>
+                <li>
+                    <label class="required">
+                    <div>Expiry Date</div>
+                    <input type="month" name="card_expiry" maxlength="7"
+                        placeholder="YYYY-MM" required value="2015-06">
+                    </label>
+                </li>
+                <li>
+                    <label class="required">
+                        <div>CVV2 No.</div>
+                        <input name="card_cvv2" class="cvv" maxlength="3"
+                        pattern="[0-9]{3}" required title="exactly 3 digits">
+                        <span>(Three digit code at back of card)</span>
+                    </label>
+                </li>
+            </ul>
+        </fieldset>
         <div>
             <input type="submit" value="Submit Order">
-            <input type="submit" id="saveOrder" value="Save Order">
+            <input type="submit" id="saveOrder" value="Save Order" formnovalidate
+            formaction="/save">
         </div>    
     </form>
 </body>
